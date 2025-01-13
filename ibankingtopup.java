@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import javax.swing.*;
+
 
 class Ibankingtopup {
     private static WebDriver driver;
@@ -67,9 +69,7 @@ class Ibankingtopup {
         driver.findElement(By.xpath("/html/body/span/span/span[2]/ul/li[4]")).click();
         Thread.sleep(2000);
 
-        String sendAccount = driver.findElement(By.xpath("/html/body/div[1]/div[2]/section[2]/form/section/div/div/div[1]/div/div[1]/div[2]/div")).getText();
-
-        System.out.println(sendAccount);
+        String sendAccount1 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/section[2]/form/section/div/div/div[1]/div/div[1]/div[2]/div")).getText();
 
         //Enter mobile number
         driver.findElement(By.id("MobileNo")).sendKeys("09964233241");
@@ -105,6 +105,20 @@ class Ibankingtopup {
         }
         Thread.sleep(3000);
         driver.findElement(By.id("btn_OK")).click();
+
+        Thread.sleep(3000);
+
+        //balance check
+        String sendAccount2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/section[2]/form/section/div/div/div[1]/div/div[1]/div[2]/div")).getText();
+
+        System.out.println(sendAccount1);
+        System.out.println(sendAccount2);
+        System.out.println("===================Balance Check================================");
+        if(!sendAccount1.equals(sendAccount2)){
+            System.out.println("Success Full Don");
+        } else {
+            System.out.println("Success Full Don");
+        }
     }
 
 
@@ -119,4 +133,3 @@ class Ibankingtopup {
 
 }
 //Phone: 09964233241
-
